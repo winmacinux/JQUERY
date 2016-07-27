@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Get Users Name</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+	<script type="text/javascript">
+		//AJAX SERVER CONNECTIVITY THROUGH JQUERY
+		$(document).ready(function(){
+			
+			$("input").keyup(function(){
+			//alert("hello");
+			var text = $("input").val();
+			
+			$.post("info.php",{suggest: text}, function(result){
+				$("span").html(result);
+			});
+		});
+			$("input").mouseover( function(){
+			$("#show").css("display", "inline").fadeOut(2000);
+		});
+		});
+		</script>
+	<style>
+	#show{
+		display: none;
+		color: red;
+	}
+	</style>
+
+</head>
+
+<body>
+<div class="container">
+	<div class="panel panel-info">
+		<div class="panel-heading ">
+			<h2>Enter the starting letter to search a name starting with it.</h2>
+		</div>
+		<div class="panel-body text-left">
+			
+			<input type="text" id="box"><span id="show">Please Enter Something!</span>
+			<br>
+			<br>
+			<p>Name Suggestions:<span></span></p>
+		</div>
+	</div>
+</div>
+</body>
+</html>
